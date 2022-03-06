@@ -1,0 +1,161 @@
+<div class="bg d-flex  ">
+  <div class="container justify-content-center align-self-center">
+    <div class="row justify-content-center align-self-center">
+      <div class="col-6 bg-light shadow-lg border border-1 border-dark rounded-3 my-3">
+        <div class="row my-3">
+          <div class="col text-center">
+            <span class="fs-1 fw-bolder">Q</span> <span class="fs-2 fw-bold">uiz</span><br>
+            <span class="fw-light fs-5 ">Fill the details to continue for exam</span>
+          </div>
+        </div>
+        <div class="row">
+          <i class="fab fa-arrow-alt-circle-down"></i>
+        </div>
+
+        <form [formGroup]="registrationForm"  >
+          <div class="row m-2 my-3">
+              <label for="exampleFormControlInput1" class="form-label">Name</label>
+                <div class="col-6 ">
+                  <input type="text" formControlName='firstName' class="form-control" id="exampleFormControlInput1" placeholder="First Name">
+                  <small *ngIf="registrationForm.get('firstName')?.hasError('pattern')">
+                    First Name accepts only alphabets.
+                  </small>
+                  <small *ngIf="registrationForm.get('firstName')?.hasError('required') && registrationForm.get('firstName')?.touched " >
+                    First Name is required.
+                  </small>
+                  <small *ngIf="registrationForm.get('firstName')?.hasError('minlength')" >
+                    Atleast 2 characters name is required.
+                  </small>
+                  <small *ngIf="registrationForm.get('firstName')?.hasError('maxlength')" >
+                    Maximum 20 characters are allowed.
+                  </small>
+              </div>
+              <div class="col-6">
+                <input type="text" formControlName="lastName" class="form-control" id="exampleFormControlInput1" placeholder="Last Name">
+                <small *ngIf="registrationForm.get('lastName')?.hasError('pattern')">
+                  Last Name accepts only alphabets.<br>
+                </small>
+                <small *ngIf="registrationForm.get('lastName')?.hasError('required') && registrationForm.get('lastName')?.touched " >
+                  Last Name is required.<br>
+                </small>
+                <small *ngIf="registrationForm.get('lastName')?.hasError('minlength')" >
+                  Atleast 2 characters name is required.<br>
+                </small>
+                <small *ngIf="registrationForm.get('lastName')?.hasError('maxlength')" >
+                  Maximum 20 characters are allowed.
+                </small>
+              </div>
+          </div>
+
+          <div class="row m-2 my-3">
+              <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                <div class="col ">
+                  <input type="email" class="form-control" formControlName="email" id="exampleFormControlInput1" placeholder="abc@domain.com">
+                  <small *ngIf="registrationForm.get('email')?.hasError('pattern')">
+                    This is not email.<br>
+                  </small>
+                  <small *ngIf="registrationForm.get('email')?.hasError('required') && registrationForm.get('email')?.touched " >
+                    Email is required.<br>
+                  </small>
+              </div>           
+          </div>
+
+          
+
+          <div class="row m-2 my-3">
+            <label for="exampleFormControlInput1" class="form-label">Occupation</label>
+              <div class="col ">
+                <select class="form-select" formControlName="occupation" aria-label="Default select example">
+                  <option *ngFor="let occupation of occupation" [ngValue]="occupation.name">{{occupation.name| titlecase}}</option>
+                </select>
+                <!-- <small *ngIf="registrationForm.get('occupation')?.hasError('required')">
+                  This is not email.<br>
+                </small> -->
+                <small *ngIf="registrationForm.get('occupation')?.value == occupation[0].name && registrationForm.get('occupation')?.touched" >
+                  Select your occupation.<br>
+                </small>
+            </div>
+        </div>
+
+        <div class="row m-2 my-3">
+          <label for="exampleFormControlInput1"  class="form-label">State of Residence</label>
+            <div class="col ">
+              <select class="form-select" formControlName="state" aria-label="Default select example">
+                <option *ngFor="let state of states" [ngValue]="state.name">{{state.name}}</option>
+              </select>
+              <small *ngIf="registrationForm.get('state')?.value == states[0].name && registrationForm.get('state')?.touched" >
+                Select your residence state.<br>
+              </small>
+          </div>
+      </div>
+
+          <div class="row m-2 my-3">
+            <!-- <div class="col-12"> -->
+              <label for="exampleFormControlInput1" class="form-label">Gender</label>
+                <div class="col-6 ">
+                  <input class="form-check-input m-1" formControlName="gender" type="radio" value="male" id="male">
+                  <label class="form-check-label" for="male">
+                    Male
+                  </label>              
+                </div>
+              <div class="col-6 ">
+                <input class="form-check-input m-1" formControlName="gender" type="radio" value="female" id="female">
+                <label class="form-check-label" for="female">
+                  Female
+                </label>            
+              </div>
+              <small *ngIf="registrationForm.get('gender')?.hasError('required')  && registrationForm.get('gender')?.touched" >
+                Gender is required.<br>
+              </small>
+             
+            <!-- </div> -->
+
+           
+          </div>
+
+          <div class="row m-2 my-3 d-flex justify-content-end">
+              <div class="col text-end">
+                <button class="btn btn-success" (click)="submit()" [disabled]="registrationForm.invalid || registrationForm.get('state')?.value == states[0].name || registrationForm.get('occupation')?.value == occupation[0].name"  >Submit</button>
+            </div>
+
+         
+        </div>
+        </form>
+       
+        
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+      <!-- <span class="fs-1 fw-bold">Registration Form</span>
+    </div>
+    <div class="row my-3 justify-content-center">
+      <div class="col-6">
+
+      
+      <form action="">
+
+        <div class="row form-control-lg">
+          <label for="firstName">firstName</label>
+          <input class="form-control-lg" type="text" name="firstName" id="" placeholder="First Name">
+        </div>
+        <div class="mb-3 row">
+          <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+          <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" id="inputPassword">
+          </div>
+        </div>
+      </form>
+    </div>
+
+    </div>
+
+  </div> -->

@@ -1,0 +1,31 @@
+.bg{
+    // background: linear-gradient(90deg, #e7a3c3 0%, #927fb7 100%);
+    background: linear-gradient(90deg, #000000a7 0%, #000000a5 100%);
+
+    // height: 100vh;
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+  
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+}
+
+// html {
+//     height: 100%;
+//   }
+//   body {
+//     min-height: 100%;
+//   }
+
+// body { 
+//     background-color: pink;
+//     background-repeat: no-repeat;
+//     background-attachment: fixed;
+//     background-position: center; 
+//   }
+
+small{
+    color: red;
+}
