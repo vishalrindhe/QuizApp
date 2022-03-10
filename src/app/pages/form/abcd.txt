@@ -1,0 +1,30 @@
+   const d = new Date("Thu Mar 10 2022 00:31:36 GMT+0530 (India Standard Time)")
+    console.log(d);
+    
+    let a = 15
+    let aS = a*60
+    let aMS = aS*1000
+    console.log(aMS);
+    
+
+    let currentDate:any = new Date();
+    
+    // let targetDate = new Date(2022, 11, 31);
+    let cDateMillisecs =  currentDate.getTime();
+    console.log(cDateMillisecs);
+
+    let tDateMillisecs = d.getTime();
+    let difference = cDateMillisecs - tDateMillisecs;
+    // console.log(this.difference)
+    let seconds = Math.floor(difference / 1000);
+
+    let minutes = Math.floor(seconds / 60);
+    console.log(minutes,":",seconds%60);
+    
+    // console.log(Math.floor(cDateMillisecs - aMS))
+    // let hours = Math.floor(minutes / 60);
+    // let days = Math.floor(hours / 24);
+
+    // console.log(new Date(currentDate.getTime() + 15*60000));
+    console.log(currentDate.getMonth());
+    console.log(currentDate);

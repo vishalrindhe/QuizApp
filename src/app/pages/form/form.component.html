@@ -115,7 +115,8 @@
 
           <div class="row m-2 my-3 d-flex justify-content-end">
               <div class="col text-end">
-                <button class="btn btn-success" (click)="submit()" [disabled]="registrationForm.invalid || registrationForm.get('state')?.value == states[0].name || registrationForm.get('occupation')?.value == occupation[0].name"  >Submit</button>
+                <button class="btn btn-success" (click)="submit()"   >Submit</button>
+                <!-- [disabled]="registrationForm.invalid || registrationForm.get('state')?.value == states[0].name || registrationForm.get('occupation')?.value == occupation[0].name" -->
             </div>
 
          

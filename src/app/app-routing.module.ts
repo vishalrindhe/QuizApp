@@ -5,13 +5,14 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormComponent } from './pages/form/form.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: 'dashboard', component:DashboardComponent},
-  { path:'form', component:FormComponent },
-  { path:'questionDisplay', component:QuestionDisplayComponent },
-  { path:'questionList', component:QuestionListComponent },
-  { path:'result', component:ResultComponent }
+  { path: 'dashboard' , canActivate:[AuthGuard], component:DashboardComponent},
+  { path:'form' , component:FormComponent },
+  { path:'questionDisplay' , canActivate:[AuthGuard], component:QuestionDisplayComponent },
+  { path:'questionList' , canActivate:[AuthGuard], component:QuestionListComponent },
+  { path:'result' , component:ResultComponent }
 ];
 
 @NgModule({

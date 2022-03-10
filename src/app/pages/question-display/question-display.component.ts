@@ -12,4 +12,9 @@ export class QuestionDisplayComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onClick(event:any){
+    console.log(event);
+    
+  }
+
 }

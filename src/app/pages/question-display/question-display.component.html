@@ -1,1 +1,28 @@
-<p>question-display works!</p>
+<div class="container">
+    <div class="row d-flex">
+        <div class="col-2 fs-4  d-flex  justify-content-center align-items-center cursor">
+            <i class="fas fa fa-caret-left"></i> &nbsp; Question 12
+        </div>
+        <div class="col-2 fs-4 offset-8 d-flex justify-content-center align-items-center cursor">
+            Question 14 &nbsp;<i class="fas fa fa-caret-right"></i>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div
+                class="content-container content-container-resp content-container-active pl-3 pr-3 pt-3 pb-2 mr-5 mt-2 mb-3 bg-info" id='1' (click)="onClick($event)">
+                <div class="evaluation_card_header">
+                <!-- {{i+1}}. {{subCategory.questionText}} -->
+                </div>
+                <div class="content-container1">
+                    <form action="">
+                        <label class="radio_text"><input type="radio" name="rating"class="none" id="" checked><span></span><span class="none_txt">None</span></label>
+                        <label class="radio_text"><input type="radio" name="rating"class="poor" id=""  ><span></span><span class="poor_txt">Low</span></label>
+                        <label class="radio_text"><input type="radio" name="rating"class="good" id="" ><span></span><span class="good_txt">Medium</span></label>
+                        <label class="radio_text"><input type="radio" name="rating"class="excellent" id=""  ><span></span><span class="excellent_txt">High</span></label>
+                    </form>
+                </div>
+            </div>
+    </div>
+</div>

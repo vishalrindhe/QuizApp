@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common'
+
 
 import { Validators, FormControl, FormGroup }  from '@angular/forms'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -58,13 +61,50 @@ export class FormComponent implements OnInit {
 
 
   
-  constructor() { }
+  constructor(private router: Router,public datepipe: DatePipe) { }
 
   ngOnInit(): void {
   }
 
   submit(){
     console.log(this.registrationForm.value);
+    // this.router.navigateByUrl('/dashboard')
+    if(localStorage.getItem('startTime') == null){
+      localStorage.setItem('startTime',JSON.stringify(new Date()))
+    }
+
+    if(localStorage.getItem('startTime') != null){
+    this.router.navigateByUrl('/dashboard')
+  }
+
+    // console.log(localStorage.getItem('startTime'));
+    
+    // const d = new Date("Thu Mar 10 2022 00:45:36 GMT+0530 (India Standard Time)")
+    // // console.log(d);
+    // let endTime = new Date(d.getTime() + 15*60000)
+    // let currentDate:any = new Date();
+  
+    // let cDateMillisecs =  currentDate.getTime();
+    // let eDateMillisecs = endTime.getTime()
+    // // console.log(cDateMillisecs);
+
+    // let difference = eDateMillisecs - cDateMillisecs;
+
+    // let seconds = Math.floor(difference / 1000);
+
+    // let minutes = Math.floor(seconds / 60);
+    // console.log(minutes,":",seconds%60);
+    
+    // console.log(Math.floor(cDateMillisecs - aMS))
+    // let hours = Math.floor(minutes / 60);
+    // let days = Math.floor(hours / 24);
+
+    // console.log(new Date(currentDate.getTime() + 15*60000));
+    // console.log(currentDate.getMonth());
+    // console.log(currentDate);
+
+
+    
     
   }
 
