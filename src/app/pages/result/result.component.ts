@@ -1,5 +1,8 @@
 import { DataService } from 'src/app/services/data.service';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+// import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-result',
@@ -12,18 +15,27 @@ export class ResultComponent implements OnInit, AfterViewInit {
   score:number = 0
   userList:any
 
-  constructor(private data: DataService) {
-    alert("inside result")
-   
+  constructor(private data: DataService,public angularFireStore: AngularFirestore) {
    }
   ngAfterViewInit() {
 
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+
+    // alert("inside result")
     this.userData = this.data.getUserDataFromLocalStorage()
-    this.a();
-    this.b();
+    this.a()
+    this.b()
+
+
+    // setTimeout(()=>{
+    //   this.a();
+    //   this.b();
+    // },1000)
+    // this.userData = this.data.getUserDataFromLocalStorage()
+    // this.a();
+    // this.b();
  
     // this.getInitialData()
   }
@@ -45,16 +57,12 @@ export class ResultComponent implements OnInit, AfterViewInit {
 
   }
 
-  getInitialData(){
+  async getInitialData(){
     alert("inside getinit")
-    // this.userData = this.data.getUserDataFromLocalStorage()
-    // this.data.getAnswerList().subscribe(res =>{
-    //   alert("inside answer")
-
-    //   console.log(res.data());
-      
-    //   this.answers = res.data()
-    // })
+   let a:any =await this.angularFireStore.collection('student-collection').doc('answers').get()
+   this.answers  = a.data()
+    let b:any = await this.angularFireStore.collection('student-collection').doc('users').get()
+    this.userList = b.data()
 
     let x:any
    

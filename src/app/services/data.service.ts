@@ -42,8 +42,8 @@ export class DataService {
    }
 
    deleteStartTime(){
-     this.router.navigateByUrl('result')
     localStorage.removeItem('startTime');
+    this.router.navigateByUrl('/result')
    }
 
    getStudentDoc(id:any){

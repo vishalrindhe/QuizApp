@@ -54,9 +54,10 @@
 
 
     </div>
-    <div class="row mt-4" *ngIf="questionNumber == 15">
+    <!-- *ngIf="questionNumber == 15" -->
+    <div class="row mt-4" [ngClass]="questionNumber != 15     ? 'invisible':''" >
         <div class="col-2 offset-10">
-            <span class="btn btn-outline-light btn-dark btn-lg " (click)="submit()"> Submit Quiz</span>
+            <span class="btn btn-outline-light btn-dark btn-lg " id="submitButton" (click)="submit()"> Submit Quiz</span>
 
         </div>
     </div>

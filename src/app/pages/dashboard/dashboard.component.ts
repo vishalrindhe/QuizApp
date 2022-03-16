@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 
+declare var $: any;
+
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -61,7 +64,9 @@ export class DashboardComponent implements OnInit {
       // console.log(this.minute,":",seconds%60);
       if((this.seconds == 0 && this.minute == 0) || (this.seconds < 0 && this.minute < 0)){
         // alert('end')
-        this.data.deleteStartTime()
+
+        $("#submitButton").click()
+        // this.data.deleteStartTime()
   
       } else if(this.seconds != 0 || this.minute != 0){
         setInterval(() => {

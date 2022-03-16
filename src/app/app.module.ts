@@ -19,6 +19,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ResultModule } from './pages/result/result.module';
 
+import * as $ from 'jquery';
+
 
 @NgModule({
   declarations: [

@@ -41,8 +41,8 @@
                     </div>
                
                 </div>
-                <div  *ngIf="score <= 8" class="col-7  d-flex justify-content-center align-items-center">
-                    <div class="bg-danger rounded-circle">
+                <div  class="col-7  d-flex justify-content-center align-items-center">
+                    <div  *ngIf="score <= 8" class="bg-danger rounded-circle">
                          <i class="fas fa fa-thumbs-down text-white m-5"></i>
                     </div>
                     <div  *ngIf="score > 8" class="bg-success rounded-circle">
