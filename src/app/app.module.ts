@@ -11,8 +11,9 @@ import { QuestionListComponent } from './pages/question-list/question-list.compo
 import { QuestionDisplayComponent } from './pages/question-display/question-display.component';
 import { ResultComponent } from './pages/result/result.component';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { far } from '@fortawesome/free-regular-svg-icons';
-import { fas } from '@fortawesome/free-solid-svg-icons';
+// import { far } from '@fortawesome/free-regular-svg-icons';
+// import { fas } from '@fortawesome/free-solid-svg-icons';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common'
 import { AngularFireModule } from '@angular/fire';
@@ -20,6 +21,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ResultModule } from './pages/result/result.module';
 
 import * as $ from 'jquery';
+
+import { NgxSpinnerModule } from "ngx-spinner";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -39,7 +43,9 @@ import * as $ from 'jquery';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    ResultModule
+    ResultModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule,
 
   ],
   providers: [DatePipe, DataService],
@@ -47,6 +53,6 @@ import * as $ from 'jquery';
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
-    library.addIconPacks(fas, far);
+    // library.addIconPacks(fas, far);
   }
  }
