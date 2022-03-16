@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { DataService } from 'src/app/services/data.service';
 
 declare var $: any;
@@ -18,9 +19,10 @@ export class DashboardComponent implements OnInit {
   questionNumber:number= 1
   userData:any
 
-  constructor(private data: DataService,private router:Router) { }
+  constructor(private data: DataService,private router:Router,private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    this.spinner.show()
     if(localStorage.getItem('questionNumber') == null){
       localStorage.setItem('questionNumber',JSON.stringify(this.questionNumber))
     } else{
@@ -31,9 +33,11 @@ export class DashboardComponent implements OnInit {
     
     // this.startTime = JSON.parse(localStorage.getItem('startTime') || '')
     this.timer()
+    
     this.data.getQuestionList().subscribe(res =>{
       this.questionsData = res.data()
       console.log("questionData:",this.questionsData);
+      this.spinner.hide()
     })
   }
 
@@ -48,7 +52,9 @@ export class DashboardComponent implements OnInit {
     const d = new Date(this.data.getStartTime())
     // console.log(d);
     if(d != null || d != undefined || d != ''){
-      let endTime = new Date(d.getTime() + 1*60000)
+      let endTime = new Date(d.getTime() + 1*10000)
+
+      // let endTime = new Date(d.getTime() + 1*60000)
       let currentDate:any = new Date();
     
       let cDateMillisecs =  currentDate.getTime();
@@ -65,7 +71,9 @@ export class DashboardComponent implements OnInit {
       if((this.seconds == 0 && this.minute == 0) || (this.seconds < 0 && this.minute < 0)){
         // alert('end')
 
-        $("#submitButton").click()
+        // $("#submitButton").click()
+        localStorage.removeItem('startTime');
+        this.router.navigateByUrl('result')
         // this.data.deleteStartTime()
   
       } else if(this.seconds != 0 || this.minute != 0){

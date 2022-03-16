@@ -3,8 +3,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 // var admin = require('firebase-admin');  
-import * as firebase from 'firebase';
-
 @Injectable({
   providedIn: 'root'
 })

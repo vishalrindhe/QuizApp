@@ -5,6 +5,7 @@ import { DatePipe } from '@angular/common'
 import { Validators, FormControl, FormGroup }  from '@angular/forms'
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-form',
@@ -62,13 +63,17 @@ export class FormComponent implements OnInit {
 
 
   
-  constructor(private router: Router,public datepipe: DatePipe, private data: DataService) { }
+  constructor(private router: Router,public datepipe: DatePipe, private data: DataService,private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     // this.data.getAnswerList().subscribe( (res:any) => {
     //   console.log(res.data());
       
     // });
+    this.spinner.show()
+    setTimeout(() => {
+      this.spinner.hide()
+    }, 5000);
     
   }
 

@@ -1,6 +1,7 @@
 import { DataService } from 'src/app/services/data.service';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { NgxSpinnerService } from 'ngx-spinner';
 // import * as $ from 'jquery';
 
 
@@ -9,49 +10,37 @@ import { AngularFirestore } from '@angular/fire/firestore';
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.scss']
 })
-export class ResultComponent implements OnInit, AfterViewInit {
+export class ResultComponent implements OnInit {
   answers:any
   userData:any
   score:number = 0
   userList:any
 
-  constructor(private data: DataService,public angularFireStore: AngularFirestore) {
+  constructor(private data: DataService,public angularFireStore: AngularFirestore,private spinner: NgxSpinnerService) {
    }
-  ngAfterViewInit() {
 
-  }
-
-  async ngOnInit() {
-
-    // alert("inside result")
+  ngOnInit() {
     this.userData = this.data.getUserDataFromLocalStorage()
     this.a()
     this.b()
-
-
-    // setTimeout(()=>{
-    //   this.a();
-    //   this.b();
-    // },1000)
-    // this.userData = this.data.getUserDataFromLocalStorage()
-    // this.a();
-    // this.b();
- 
-    // this.getInitialData()
   }
   a(){
+    this.spinner.show()
     this.data.getAnswerList().subscribe( (res:any) => {
-      alert('answer')
+      // alert('answer')
       this.answers = res.data()
       console.log("answers:",this.answers);
+      this.spinner.hide()
     });
   }
 
   b(){
+    this.spinner.show()
     this.data.getUsersList().subscribe(res =>{
-      alert("inside user")
+      // alert("inside user")
      this.userList= res.data()
      console.log("users:",this.userList);
+     this.spinner.hide()
      this.calculateScore()
    })
 
