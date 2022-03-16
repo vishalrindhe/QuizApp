@@ -1,3 +1,5 @@
+import { DataService } from 'src/app/services/data.service';
+import { environment } from './../environments/environment';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -13,6 +15,9 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common'
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { ResultModule } from './pages/result/result.module';
 
 
 @NgModule({
@@ -29,9 +34,13 @@ import { DatePipe } from '@angular/common'
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    ResultModule
+
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

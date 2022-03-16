@@ -12,7 +12,11 @@ const routes: Routes = [
   { path:'form' , component:FormComponent },
   { path:'questionDisplay' , canActivate:[AuthGuard], component:QuestionDisplayComponent },
   { path:'questionList' , canActivate:[AuthGuard], component:QuestionListComponent },
-  { path:'result' , component:ResultComponent }
+  { path:'result' ,
+  loadChildren: () => import('./pages/result/result.module').then(mod => mod.ResultModule)  
+  
+  // component:ResultComponent
+ }
 ];
 
 @NgModule({

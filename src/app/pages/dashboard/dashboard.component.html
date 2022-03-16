@@ -1,15 +1,18 @@
 <div class="">
-    <div class="row m-0">
-        <div class="col-3 text-center m-2">
-        <span class="fs-3 " >Time Left:&nbsp;{{minute}}:{{seconds}}</span>
-    </div>
-    </div>
-    <div class="row m-0">
-        <div class="col-3 border-1 border border-dark ">
-            <app-question-list></app-question-list>
+    <div class="row m-0 py-3 bg-dark text-white">
+        <div class="col-3  text-center">
+            <span class="fs-3 " >Time Left:&nbsp;{{minute}}:{{seconds}}</span>
         </div>
-        <div class="col-9 border-1 border border-danger">
-            <app-question-display></app-question-display>
+        <div class="col-3 offset-6 d-flex align-content-end text-center">
+            <span class="fs-3 " >Candidate: {{userData.firstName | titlecase}} {{userData.lastName | titlecase}} </span>
+        </div>
+    </div>
+    <div class="row m-0 m-2 ">
+        <div class="col-3  py-3 border-end border-dark">
+            <app-question-list [userData]="userData" [questionNumber]="questionNumber" (newItemEvent)="addItem($event)" ></app-question-list>
+        </div>
+        <div class="col-9  py-3">
+            <app-question-display [userData]="userData" [questionData]="questionsData" [questionNumber]="questionNumber" (newItemEvent)="addItem($event)"></app-question-display>
         </div>
     </div>
 </div>

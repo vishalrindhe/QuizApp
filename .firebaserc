@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "quizapp-7b163": {
+      "hosting": {
+        "quizApp": [
+          "quizapp-7b163"
+        ]
+      }
+    }
+  }
+}

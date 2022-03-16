@@ -4,6 +4,7 @@ import { DatePipe } from '@angular/common'
 
 import { Validators, FormControl, FormGroup }  from '@angular/forms'
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-form',
@@ -61,14 +62,205 @@ export class FormComponent implements OnInit {
 
 
   
-  constructor(private router: Router,public datepipe: DatePipe) { }
+  constructor(private router: Router,public datepipe: DatePipe, private data: DataService) { }
 
   ngOnInit(): void {
+    // this.data.getAnswerList().subscribe( (res:any) => {
+    //   console.log(res.data());
+      
+    // });
+    
   }
 
   submit(){
     console.log(this.registrationForm.value);
+    this.data.addUserDataToLocalStorage(this.registrationForm.value)
     // this.router.navigateByUrl('/dashboard')
+
+    // this.registrationForm.value.firstName = a
+    let questions = {
+      
+       1:{
+        option1: "c",
+        option2: "z",
+        option3: "b",
+        option4: "d",
+        question: "what comes after A?"
+       },
+       2:{
+        option1: "0",
+        option2: "-1",
+        option3: "-2",
+        option4: "2",
+        question: "1+1 =?" 
+       },
+       3:{
+        option1: "#000000",
+        option2: "#ffffff",
+        option3: "#111111",
+        option4: "#222222",
+        question: "hex code for black color?" 
+       },
+       4:{
+        option1: "package",
+        option2: "template",
+        option3: "framework",
+        option4: "module",
+        question: "what is angular?" 
+       },
+       5:{
+        option1: "c",
+        option2: "z",
+        option3: "b",
+        option4: "d",
+        question: "last letter of the english alphabet?" 
+       },
+       6:{
+        option1: "c",
+        option2: "z",
+        option3: "b",
+        option4: "d",
+        question: "what comes before A?" 
+       },
+       7:{
+        option1: "1",
+        option2: "2",
+        option3: "3",
+        option4: "4",
+        question: "1 + 0 = ?" 
+       },
+       8:{
+        option1: "4",
+        option2: "5",
+        option3: "6",
+        option4: "7",
+        question: "2 + 3 = ?" 
+       },
+       9:{
+        option1: "c",
+        option2: "z",
+        option3: "b",
+        option4: "d",
+        question: "what comes after A?"
+       },
+       10:{
+        option1: "0",
+        option2: "-1",
+        option3: "-2",
+        option4: "2",
+        question: "1+1 =?" 
+       },
+       11:{
+        option1: "#000000",
+        option2: "#ffffff",
+        option3: "#111111",
+        option4: "#222222",
+        question: "hex code for black color?" 
+       },
+       12:{
+        option1: "package",
+        option2: "template",
+        option3: "framework",
+        option4: "module",
+        question: "what is angular?" 
+       },
+       13:{
+        option1: "c",
+        option2: "z",
+        option3: "b",
+        option4: "d",
+        question: "last letter of the english alphabet?" 
+       },
+       14:{
+        option1: "c",
+        option2: "z",
+        option3: "b",
+        option4: "d",
+        question: "what comes before A?" 
+       },
+       15:{
+        option1: "1",
+        option2: "2",
+        option3: "3",
+        option4: "4",
+        question: "1 + 0 = ?" 
+       }
+      }
+
+    let a = {
+      "answers":[
+      {"1":3},
+      {"2":4},
+      {"3":1},
+      {"4":3},
+      {"5":2},
+      {"6":2},
+      {"7":1},
+      {"8":2},
+      {"9":3},
+      {"10":4},
+      {"11":1},
+      {"12":3},
+      {"13":2},
+      {"14":2},
+      {"15":1}
+      ]
+  }
+
+  let answers = {
+    1:3,
+    2:4,
+    3:1,
+    4:4,
+    5:2,
+    6:2,
+    7:1,
+    8:2,
+    9:3,
+    10:4,
+    11:1,
+    12:3,
+    13:2,
+    14:2,
+    15:1
+  }
+
+  let u = {
+    "1": 3,
+    "2": 4,
+    "3": 1,
+    "4": 3,
+    "5": 2,
+    "firstName": "Vishal",
+    "lastName": "Vishal",
+    "email": "rindhevishal32@gmail.com",
+    "occupation": "Systems analyst",
+    "state": "Arunachal Pradesh",
+    "gender": "male"
+  }
+
+
+    // let a = [3,4,1,3,2,2,1,2,3,4,1,3,2,2,1]
+
+    // this.data.createExam(answers)
+    // let x:any
+    //  this.data.getUsersList().subscribe(res =>{
+    //   console.log(res);
+    //   x= res.data()
+    //   console.log(x);
+      
+    //   x.users.push(u)
+    // console.log(this.data.pushUserDataToFirestore(x))
+    // })
+
+    
+    // this.data.createExam(questions)
+
+    // this.data.getStudentList().subscribe(res =>{
+    //   // console.log(res);
+    //   this.data.apiData = res
+      
+    // })
     if(localStorage.getItem('startTime') == null){
       localStorage.setItem('startTime',JSON.stringify(new Date()))
     }

@@ -1,1 +1,97 @@
-<p>result works!</p>
+<!-- <div class="container">
+    <div class="row">
+        <div class="col">
+            <span class='fs-3 fw-bold'>Result</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            score: <span *ngIf="score <= 4">poor</span>
+            <span *ngIf="score <= 8 && score > 4">average</span>
+            <span *ngIf="score <= 12 && score > 8">Good</span>
+            <span *ngIf="score > 12">excellent</span>
+        </div>
+    </div>
+</div> -->
+
+
+<div class="bg d-flex  ">
+    <div class="container justify-content-center align-self-center">
+      <div class="row justify-content-center align-self-center">
+        <div class="col-6 bg-light shadow-lg border border-1 border-dark rounded-3 my-3">
+            <div class="row">
+                <div class="col">
+                    <span class="fs-2 fw-bold">Quiz Result</span>
+                </div>
+            </div>
+            <div class="row m-3 d-flex align-items-center">
+                <div class="col-5">
+                    <div class="row">
+                        <div class="col-12 fs-5">
+                            <span>Here are your quiz results:</span>
+                        </div>
+                    </div>
+                    <div class="row my-2 d-flex">
+                        <div class="col-12  text-center">
+                            <span class="fs-1 fw-bolder" *ngIf="score <= 4">Poor</span>
+                            <span class="fs-1 fw-bolder" *ngIf="score <= 8 && score > 4">Average</span>
+                            <span class="fs-1 fw-bolder" *ngIf="score <= 12 && score > 8">Good</span>
+                            <span class="fs-1 fw-bolder" *ngIf="score > 12">Excellent</span>
+                        </div>
+                    </div>
+               
+                </div>
+                <div  *ngIf="score <= 8" class="col-7  d-flex justify-content-center align-items-center">
+                    <div class="bg-danger rounded-circle">
+                         <i class="fas fa fa-thumbs-down text-white m-5"></i>
+                    </div>
+                    <div  *ngIf="score > 8" class="bg-success rounded-circle">
+                        <i class="fas fa fa-thumbs-up text-white m-5"></i>
+                   </div>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-center border-top">
+                <div class="col-4 border-end">
+                    <div class="row ">
+                        <div class="col-12 text-center fs-2 fw-bold">
+                        {{score}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-center fw-bold">
+                            Your points
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 border-end">
+                    <div class="row ">
+                        <div class="col-12 text-center fs-2 fw-bold">
+                            15
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-center fw-bold">
+                            Total points
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 ">
+                    <div class="row ">
+                        <div class="col-12 text-center fs-2 fw-bold">
+                        {{ (score/15) * 100  | number:'1.0-2'}}%
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-center fw-bold">
+                            Your percentage
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+      </div>
+    </div>
+</div>
