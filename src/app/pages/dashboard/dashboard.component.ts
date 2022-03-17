@@ -79,7 +79,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   timer(){
     const d = new Date(this.data.getStartTime())
     if(d != null || d != undefined || d != ''){
-      let endTime = new Date(d.getTime() + 1*60000)
+      let endTime = new Date(d.getTime() + 15*60000)
       let currentDate:any = new Date();
     
       let cDateMillisecs =  currentDate.getTime();
