@@ -1,27 +1,10 @@
-<!-- <div class="container">
-    <div class="row">
-        <div class="col">
-            <span class='fs-3 fw-bold'>Result</span>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            score: <span *ngIf="score <= 4">poor</span>
-            <span *ngIf="score <= 8 && score > 4">average</span>
-            <span *ngIf="score <= 12 && score > 8">Good</span>
-            <span *ngIf="score > 12">excellent</span>
-        </div>
-    </div>
-</div> -->
-
-
 <div class="bg d-flex  ">
     <div class="container justify-content-center align-self-center">
       <div class="row justify-content-center align-self-center">
         <div class="col-6 bg-light shadow-lg border border-1 border-dark rounded-3 my-3">
             <div class="row">
                 <div class="col">
-                    <span class="fs-2 fw-bold">Quiz Result</span>
+                    <span class="fs-2 fw-bold">{{userData.firstName | titlecase}} {{userData.lastName | titlecase}}</span>
                 </div>
             </div>
             <div class="row m-3 d-flex align-items-center">
@@ -33,19 +16,19 @@
                     </div>
                     <div class="row my-2 d-flex">
                         <div class="col-12  text-center">
-                            <span class="fs-1 fw-bolder" *ngIf="score <= 4">Poor</span>
-                            <span class="fs-1 fw-bolder" *ngIf="score <= 8 && score > 4">Average</span>
-                            <span class="fs-1 fw-bolder" *ngIf="score <= 12 && score > 8">Good</span>
-                            <span class="fs-1 fw-bolder" *ngIf="score > 12">Excellent</span>
+                            <span class="fs-1 fw-bolder" *ngIf="score <= 5">Fair</span>
+                            <span class="fs-1 fw-bolder" *ngIf="score <= 10 && score > 5">Good</span>
+                            <!-- <span class="fs-1 fw-bolder" *ngIf="score <= 12 && score > 10">Good</span> -->
+                            <span class="fs-1 fw-bolder" *ngIf="score > 10">Excellent</span>
                         </div>
                     </div>
                
                 </div>
                 <div  class="col-7  d-flex justify-content-center align-items-center">
-                    <div  *ngIf="score <= 8" class="bg-danger rounded-circle">
+                    <div  *ngIf="score <= 5" class="bg-danger rounded-circle">
                          <i class="fas fa fa-thumbs-down text-white m-5"></i>
                     </div>
-                    <div  *ngIf="score > 8" class="bg-success rounded-circle">
+                    <div  *ngIf="score > 5" class="bg-success rounded-circle">
                         <i class="fas fa fa-thumbs-up text-white m-5"></i>
                    </div>
                 </div>

@@ -2,22 +2,15 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-// var admin = require('firebase-admin');  
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
   apiData:any
   startTime:any = 0
+  answers:any
+  userList:any
   constructor(private router:Router, public angularFireStore: AngularFirestore ) {
-    // setInterval(()=>{
-    //   if(localStorage.getItem('startTime') != null){
-    //     this.startTime = JSON.parse(localStorage.getItem('startTime') || '')
-    //   }
-    // },1000)
-    // if(localStorage.getItem('startTime') != null){
-    //   this.startTime = JSON.parse(localStorage.getItem('startTime') || '')
-    // }
    }
 
    getStartTime(){
@@ -26,8 +19,6 @@ export class DataService {
      }     
      return this.startTime;
    }
-
-  //  getQuestionNumberFromLocal
 
    addUserDataToLocalStorage(val:any){
      console.log(val);
@@ -50,7 +41,6 @@ export class DataService {
 
    getStudentList(){
     return this.angularFireStore.collection('student-collection').snapshotChanges()
-    // return this.angularFireStore.collection('student-collection').get()
   }
 
   getQuestionList(): Observable<any>{
@@ -61,14 +51,10 @@ export class DataService {
 
   getAnswerList(): Observable<any>{
     return this.angularFireStore.collection('student-collection').doc('answers').get()
-    // return this.angularFireStore.collection('student-collection').doc('exam_questions').snapshotChanges()
-    // return this.angularFireStore.collection('student-collection').get()
   }
 
   getUsersList(): Observable<any>{
     return this.angularFireStore.collection('student-collection').doc('users').get()
-    // return this.angularFireStore.collection('student-collection').doc('exam_questions').snapshotChanges()
-    // return this.angularFireStore.collection('student-collection').get()
   }
 
   createExam(data:any){

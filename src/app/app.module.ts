@@ -18,7 +18,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common'
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { ResultModule } from './pages/result/result.module';
 
 import * as $ from 'jquery';
 
@@ -31,9 +30,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     DashboardComponent,
     FormComponent,
+    ResultComponent,
     QuestionListComponent,
     QuestionDisplayComponent,
-    ResultComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +42,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    ResultModule,
     NgxSpinnerModule,
     BrowserAnimationsModule,
 

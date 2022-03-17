@@ -16,9 +16,6 @@ export class QuestionListComponent implements OnInit {
   constructor(private data: DataService) { }
 
   ngOnInit(): void {
-    // this.data.getQuestionList().subscribe(res =>{
-    //   this.questionsData = res
-    // })
   }
 
   addNewItem(value: number) {

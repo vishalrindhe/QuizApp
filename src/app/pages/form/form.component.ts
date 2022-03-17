@@ -66,23 +66,11 @@ export class FormComponent implements OnInit {
   constructor(private router: Router,public datepipe: DatePipe, private data: DataService,private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
-    // this.data.getAnswerList().subscribe( (res:any) => {
-    //   console.log(res.data());
-      
-    // });
-    this.spinner.show()
-    setTimeout(() => {
-      this.spinner.hide()
-    }, 5000);
-    
   }
 
   submit(){
     console.log(this.registrationForm.value);
     this.data.addUserDataToLocalStorage(this.registrationForm.value)
-    // this.router.navigateByUrl('/dashboard')
-
-    // this.registrationForm.value.firstName = a
     let questions = {
       
        1:{
@@ -244,28 +232,6 @@ export class FormComponent implements OnInit {
     "gender": "male"
   }
 
-
-    // let a = [3,4,1,3,2,2,1,2,3,4,1,3,2,2,1]
-
-    // this.data.createExam(answers)
-    // let x:any
-    //  this.data.getUsersList().subscribe(res =>{
-    //   console.log(res);
-    //   x= res.data()
-    //   console.log(x);
-      
-    //   x.users.push(u)
-    // console.log(this.data.pushUserDataToFirestore(x))
-    // })
-
-    
-    // this.data.createExam(questions)
-
-    // this.data.getStudentList().subscribe(res =>{
-    //   // console.log(res);
-    //   this.data.apiData = res
-      
-    // })
     if(localStorage.getItem('startTime') == null){
       localStorage.setItem('startTime',JSON.stringify(new Date()))
     }
@@ -273,35 +239,6 @@ export class FormComponent implements OnInit {
     if(localStorage.getItem('startTime') != null){
     this.router.navigateByUrl('/dashboard')
   }
-
-    // console.log(localStorage.getItem('startTime'));
-    
-    // const d = new Date("Thu Mar 10 2022 00:45:36 GMT+0530 (India Standard Time)")
-    // // console.log(d);
-    // let endTime = new Date(d.getTime() + 15*60000)
-    // let currentDate:any = new Date();
-  
-    // let cDateMillisecs =  currentDate.getTime();
-    // let eDateMillisecs = endTime.getTime()
-    // // console.log(cDateMillisecs);
-
-    // let difference = eDateMillisecs - cDateMillisecs;
-
-    // let seconds = Math.floor(difference / 1000);
-
-    // let minutes = Math.floor(seconds / 60);
-    // console.log(minutes,":",seconds%60);
-    
-    // console.log(Math.floor(cDateMillisecs - aMS))
-    // let hours = Math.floor(minutes / 60);
-    // let days = Math.floor(hours / 24);
-
-    // console.log(new Date(currentDate.getTime() + 15*60000));
-    // console.log(currentDate.getMonth());
-    // console.log(currentDate);
-
-
-    
     
   }
 

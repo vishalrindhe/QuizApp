@@ -24,11 +24,6 @@ export class QuestionDisplayComponent implements OnInit,OnChanges {
   }
 
   ngOnInit(): void {
-    // this.data.getStudentList().subscribe(res =>{
-    //   // console.log(res);
-    //   this.userData = res
-      
-    // })
     this.nextQuestionOptionVal(this.questionNumber)
   }
 

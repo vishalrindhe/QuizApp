@@ -68,9 +68,6 @@
                 <select class="form-select" formControlName="occupation" aria-label="Default select example">
                   <option *ngFor="let occupation of occupation" [ngValue]="occupation.name">{{occupation.name| titlecase}}</option>
                 </select>
-                <!-- <small *ngIf="registrationForm.get('occupation')?.hasError('required')">
-                  This is not email.<br>
-                </small> -->
                 <small *ngIf="registrationForm.get('occupation')?.value == occupation[0].name && registrationForm.get('occupation')?.touched" >
                   Select your occupation.<br>
                 </small>
@@ -117,7 +114,7 @@
               <div class="col text-end">
                 <!-- [disabled]="registrationForm.invalid || registrationForm.get('state')?.value == states[0].name || registrationForm.get('occupation')?.value == occupation[0].name"   -->
                 <button class="btn btn-success" (click)="submit()"
- 
+
                   >Submit</button>
                 
             </div>

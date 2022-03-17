@@ -1,6 +1,6 @@
 import { DataService } from 'src/app/services/data.service';
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+// import { AngularFirestore } from '@angular/fire/firestore';
 import { NgxSpinnerService } from 'ngx-spinner';
 // import * as $ from 'jquery';
 
@@ -16,26 +16,36 @@ export class ResultComponent implements OnInit {
   score:number = 0
   userList:any
 
-  constructor(private data: DataService,public angularFireStore: AngularFirestore,private spinner: NgxSpinnerService) {
+  constructor(private data: DataService,private spinner: NgxSpinnerService) {
    }
 
   ngOnInit() {
-    this.userData = this.data.getUserDataFromLocalStorage()
-    this.a()
-    this.b()
+    this.userData = this.data.getUserDataFromLocalStorage(),
+    this.answers = this.data.answers
+    this.userList = this.data.userList
+    console.log(this.answers);
+    console.log(this.userList);
+    
+    
+    this.calculateScore()
+    
+    // alert("inside")
+    // this.spinner.show()
+    // this.userData = this.data.getUserDataFromLocalStorage()
+    // this.a()
+    // this.b()
   }
   a(){
-    this.spinner.show()
-    this.data.getAnswerList().subscribe( (res:any) => {
+    this.data.getAnswerList().subscribe( res => {
       // alert('answer')
       this.answers = res.data()
       console.log("answers:",this.answers);
-      this.spinner.hide()
+      // this.spinner.hide()
     });
   }
 
   b(){
-    this.spinner.show()
+    // this.spinner.show()
     this.data.getUsersList().subscribe(res =>{
       // alert("inside user")
      this.userList= res.data()
@@ -43,18 +53,6 @@ export class ResultComponent implements OnInit {
      this.spinner.hide()
      this.calculateScore()
    })
-
-  }
-
-  async getInitialData(){
-    alert("inside getinit")
-   let a:any =await this.angularFireStore.collection('student-collection').doc('answers').get()
-   this.answers  = a.data()
-    let b:any = await this.angularFireStore.collection('student-collection').doc('users').get()
-    this.userList = b.data()
-
-    let x:any
-   
 
   }
 
@@ -75,10 +73,6 @@ export class ResultComponent implements OnInit {
       console.log("usrListafterpush:",this.userList);
       
       this.data.pushUserDataToFirestore(this.userList)
-      
-
-      
-      // this.data.pushUserDataToFirestore(this.userData)
   }
 
 

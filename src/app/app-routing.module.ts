@@ -13,9 +13,9 @@ const routes: Routes = [
   { path:'questionDisplay' , canActivate:[AuthGuard], component:QuestionDisplayComponent },
   { path:'questionList' , canActivate:[AuthGuard], component:QuestionListComponent },
   { path:'result' ,
-  loadChildren: () => import('./pages/result/result.module').then(mod => mod.ResultModule)  
+  // loadChildren: () => import('./pages/result/result.module').then(mod => mod.ResultModule)  
   
-  // component:ResultComponent
+  component:ResultComponent
  }
 ];
 
